@@ -126,9 +126,10 @@ public class MainActivity extends AppCompatActivity {
         myLaptopAdapter = new LaptopAdapter(MainActivity.this,lista);
         mLayoutManager = new LinearLayoutManager(MainActivity.this);
         listLaptops.setLayoutManager(mLayoutManager);
-        listLaptops.addItemDecoration(new DividerItemDecoration(MainActivity.this, LinearLayoutManager.VERTICAL));
+        //listLaptops.addItemDecoration(new DividerItemDecoration(MainActivity.this, LinearLayoutManager.VERTICAL));
         listLaptops.setAdapter(myLaptopAdapter);
         listLaptops.setItemAnimator(new DefaultItemAnimator());
+        ///dasdsad
     }
 
     private class ClickListener {

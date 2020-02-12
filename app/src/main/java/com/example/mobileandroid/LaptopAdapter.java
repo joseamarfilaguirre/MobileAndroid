@@ -68,7 +68,7 @@ public class LaptopAdapter extends RecyclerView.Adapter<LaptopAdapter.ViewHolder
         viewHolder.descriptionLaptop.setText(text);
         Glide.with(mContext)
                 .load(laptop.getImage())
-                //.apply(RequestOptions.placeholderOf(R.drawable.default_image))
+                //.apply(RequestOptions.placeholderOf(R.drawable.))
                 .into(viewHolder.imageLaptop);
     }
     @Override

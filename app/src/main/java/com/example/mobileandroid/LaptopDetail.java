@@ -35,7 +35,7 @@ public class LaptopDetail extends AppCompatActivity {
         description.setText("     "+laptop.getDescription());
         Glide.with(LaptopDetail.this)
                 .load(laptop.getImage())
-                //.apply(RequestOptions.placeholderOf(R.drawable.default_image))
+                 //.apply(RequestOptions.placeholderOf(R.drawable.))
                 .into(image);
     }
     @Override
