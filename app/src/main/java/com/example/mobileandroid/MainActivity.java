@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,12 +40,20 @@ public class MainActivity extends AppCompatActivity {
     private List<Laptop> lista = new LinkedList<Laptop>();
     private LaptopAdapter myLaptopAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
+    ProgressBar progressBarLaptop;
     private TextView textError;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         listLaptops = (RecyclerView) findViewById(R.id.lista_laptops);
+        progressBarLaptop = findViewById(R.id.progres_laptops);
+        textError = findViewById(R.id.text_error);
+        progressBarLaptop.setVisibility(View.VISIBLE);
+        progressBarLaptop.setMax(100);
+        progressBarLaptop.setIndeterminate(true);
+        progressBarLaptop.setProgress(1);
+        progressBarLaptop.setVisibility(View.VISIBLE);
         inicialiceList();
         listLaptops.addOnItemTouchListener(new RecyclerTouchListener(getApplicationContext(), listLaptops, new RecyclerTouchListener.ClickListener() {
             @Override
@@ -69,6 +78,8 @@ public class MainActivity extends AppCompatActivity {
                     public void onResponse(JSONArray response) {
                         if(response != null) {
                             Log.d("Response String Volley", response.toString());
+                            progressBarLaptop.setProgress(100);
+                            progressBarLaptop.setVisibility(View.GONE);
                             procesarRespuesta(response);
                         }else{
                             Log.d("Response Volley", "Es NULL");
@@ -104,8 +115,9 @@ public class MainActivity extends AppCompatActivity {
         //VolleySingleton.getInstance(getActivity()).addToRequestQueue(StringRequest);
     }
     private void procesarError() {
-//        textError.setText("ocurrió un error. intente más tarde");
-//        textError.setVisibility(View.VISIBLE);
+        progressBarLaptop.setProgress(100);
+        progressBarLaptop.setVisibility(View.GONE);
+        textError.setVisibility(View.VISIBLE);
     }
 
     private void procesarRespuesta(JSONArray response) {
@@ -129,9 +141,5 @@ public class MainActivity extends AppCompatActivity {
         //listLaptops.addItemDecoration(new DividerItemDecoration(MainActivity.this, LinearLayoutManager.VERTICAL));
         listLaptops.setAdapter(myLaptopAdapter);
         listLaptops.setItemAnimator(new DefaultItemAnimator());
-        ///dasdsad
-    }
-
-    private class ClickListener {
     }
 }

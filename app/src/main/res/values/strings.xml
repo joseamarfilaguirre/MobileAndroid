@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MobileAndroid</string>
+    <string name="text_error">Ocurrio un error al obtener los datos</string>
 </resources>
