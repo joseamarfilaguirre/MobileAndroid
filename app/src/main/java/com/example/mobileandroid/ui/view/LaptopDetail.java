@@ -1,4 +1,4 @@
-package com.example.mobileandroid;
+package com.example.mobileandroid.ui.view;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.example.mobileandroid.R;
+import com.example.mobileandroid.model.Laptop;
 
 import java.util.Objects;
 

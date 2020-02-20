@@ -1,4 +1,4 @@
-package com.example.mobileandroid;
+package com.example.mobileandroid.ui.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -13,10 +13,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.example.mobileandroid.R;
+import com.example.mobileandroid.model.Laptop;
 
 import java.util.List;
 
 public class LaptopAdapter extends RecyclerView.Adapter<LaptopAdapter.ViewHolder> {
+    //private List <Laptop> mDataset;
     private List<Laptop> mDataset;
     private Context mContext;
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -28,25 +31,28 @@ public class LaptopAdapter extends RecyclerView.Adapter<LaptopAdapter.ViewHolder
 
         public ViewHolder(View itemView) {
             super(itemView);
-            relativeLayout = (RelativeLayout)itemView.findViewById(R.id.conteiner_item_laptop);
+            relativeLayout = (RelativeLayout) itemView.findViewById(R.id.conteiner_item_laptop);
             imageLaptop = (ImageView) itemView.findViewById(R.id.image_laptop);
-            titleLaptop = (TextView)itemView.findViewById(R.id.title_laptop);
-            descriptionLaptop = (TextView)itemView.findViewById(R.id.description_laptop);
+            titleLaptop = (TextView) itemView.findViewById(R.id.title_laptop);
+            descriptionLaptop = (TextView) itemView.findViewById(R.id.description_laptop);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     int position = getAdapterPosition();
-                    if(position != RecyclerView.NO_POSITION) {
+                    if (position != RecyclerView.NO_POSITION) {
+
                     }
                 }
             });
         }
     }
+
     // Provide a suitable constructor (depends on the kind of dataset)
     public LaptopAdapter(Context context, List<Laptop> myDataset) {
         mDataset = myDataset;
         mContext = context;
     }
+
     // Create new views (invoked by the layout manager)
 //    @NonNull
     @Override
@@ -60,9 +66,9 @@ public class LaptopAdapter extends RecyclerView.Adapter<LaptopAdapter.ViewHolder
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
         Laptop laptop = mDataset.get(i);
-        String desc,text;
+        String desc, text;
         desc = laptop.getDescription();
-        if (desc.length()>100)text = desc.substring(0,99).concat("...");
+        if (desc.length() > 100) text = desc.substring(0, 99).concat("...");
         else text = desc.concat("...");
         viewHolder.titleLaptop.setText(laptop.getTitle());
         viewHolder.descriptionLaptop.setText(text);
@@ -71,6 +77,7 @@ public class LaptopAdapter extends RecyclerView.Adapter<LaptopAdapter.ViewHolder
                 .apply(RequestOptions.placeholderOf(R.drawable.placeholder))
                 .into(viewHolder.imageLaptop);
     }
+
     @Override
     public int getItemCount() {
         return mDataset.size();

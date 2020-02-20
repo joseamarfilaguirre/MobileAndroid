@@ -1,4 +1,4 @@
-package com.example.mobileandroid;
+package com.example.mobileandroid.ui.adapter;
 
 import android.content.Context;
 import android.view.GestureDetector;
